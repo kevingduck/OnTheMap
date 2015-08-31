@@ -2,7 +2,7 @@
 //  On_The_MapTests.swift
 //  On The MapTests
 //
-//  Created by Kevin Duck on 8/31/15.
+//  Created by Kevin Duck on 8/24/15.
 //  Copyright (c) 2015 Kevin Duck. All rights reserved.
 //
 

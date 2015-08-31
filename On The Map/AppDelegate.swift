@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  On The Map
 //
-//  Created by Kevin Duck on 8/31/15.
+//  Created by Kevin Duck on 8/24/15.
 //  Copyright (c) 2015 Kevin Duck. All rights reserved.
 //
 
@@ -12,6 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var accountKey : String = ""
+    var firstName : String = ""
+    var lastName : String = ""
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
