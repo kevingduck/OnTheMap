@@ -17,10 +17,11 @@ class ParseClient: NSObject {
     var apiKey : String
     var session: NSURLSession
     var students : [StudentInformation]
-    
+  
     override init() {
         self.appID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
-        self.apiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        //self.apiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        self.apiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gBAD___"
         self.baseURL = "https://api.parse.com/1/classes/"
         self.session = NSURLSession.sharedSession()
         self.students = []
@@ -30,7 +31,7 @@ class ParseClient: NSObject {
     
     func storeData(data:[[String:AnyObject]]){
         self.students = []
-        for student in data{
+        for student in data {
             self.students.append(StudentInformation(data: student))
         }
     }
@@ -42,12 +43,15 @@ class ParseClient: NSObject {
         request.addValue("\(self.appID)", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("\(self.apiKey)", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
+      
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+          
+           // UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            print("here")
             if error != nil {
                 completionHandler(success: false, data: ["error": "\(error.localizedDescription)"])
                 return
-            }else{
+            } else {
                 var error:NSError? = nil
                 var parsedData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error) as! [String:AnyObject]
                 completionHandler(success: true, data: parsedData )
@@ -82,9 +86,6 @@ class ParseClient: NSObject {
         task.resume()
     }
 
-/*
-    
-*/
     
     class func sharedInstance() -> ParseClient {
         
